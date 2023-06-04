@@ -59,12 +59,14 @@ section[data-testid='stSidebar'] > div > div:nth-child(2) {
 
 /* Hide hamburger menu and footer */
 header[data-testid='stHeader'] {
-  display: none;
+  display: none !important;
 }
 div.css-r698ls.e8zbici2 {
-  display: none;
+  display: none !important; 
 }
-
+.css-18ni7ap, .css-1dp5vir, .css-14xtw13 {
+  display: none !important;
+}
 footer.css-ipbk5a.egzxvld4 {
   display: none;
 }

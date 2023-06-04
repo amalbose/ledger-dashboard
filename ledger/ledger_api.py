@@ -7,7 +7,6 @@ def get_data():
         'income_statement': get_income_statements(),
         'balances': get_leader_bal()
     }
-    print(data)
     return data
 
 
