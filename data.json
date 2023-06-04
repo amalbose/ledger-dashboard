@@ -1,0 +1,25 @@
+{
+  "income_statement": {
+    "cur": {
+      "income": 68.34,
+      "expense": 11207.22
+    }
+  },
+  "balances": {
+    "savings": {
+      "HDFC": 1261928.57,
+      "ICICI": 14599.91,
+      "ESAF": 30492.75
+    },
+    "deposits": {
+      "ESAF": 387513.0
+    },
+    "creditcard": {},
+    "investments": {
+      "Stock": 161029.55,
+      "Mutual Funds": 1217635.03,
+      "ETF": 56201.52,
+      "NPS": 8000.0
+    }
+  }
+}
