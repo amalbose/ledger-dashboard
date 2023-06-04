@@ -1,8 +1,8 @@
 /* Card */
 /* Adapted from https://startbootstrap.com/theme/sb-admin-2 */
-div.block-container > div > div > div[data-testid="stHorizontalBlock"]:nth-child(3) > div > div> div>div[data-testid="stHorizontalBlock"] > div[data-testid="column"],
-div.block-container > div > div > div[data-testid="stHorizontalBlock"]:nth-child(5) > div[data-testid="column"],
-div.block-container > div > div > div[data-testid="stHorizontalBlock"]:nth-child(6)
+div.block-container > div > div > div[data-testid="stHorizontalBlock"]:nth-child(4) > div > div> div>div[data-testid="stHorizontalBlock"] > div[data-testid="column"],
+div.block-container > div > div > div[data-testid="stHorizontalBlock"]:nth-child(6) > div[data-testid="column"],
+div.block-container > div > div > div[data-testid="stHorizontalBlock"]:nth-child(7)
 {
   background-color: #FFFFFF;
   border: 1px solid #EFEFEF;
@@ -14,12 +14,12 @@ div.block-container > div > div > div[data-testid="stHorizontalBlock"]:nth-child
 }
 
 /* red for expense col */
-div.block-container > div > div > div[data-testid="stHorizontalBlock"]:nth-child(3) > div > div> div>div[data-testid="stHorizontalBlock"] > div[data-testid="column"]:nth-child(2) {
+div.block-container > div > div > div[data-testid="stHorizontalBlock"]:nth-child(4) > div > div> div>div[data-testid="stHorizontalBlock"] > div[data-testid="column"]:nth-child(2) {
   border-left: 0.5rem solid #e28955 !important;
 }
 
 /* chart */
-div.block-container > div > div > div[data-testid="stHorizontalBlock"]:nth-child(7)
+div.block-container > div > div > div[data-testid="stHorizontalBlock"]:nth-child(8)
 {
   background-color: #FFFFFF;
   border: 1px solid #FFFFFF;
