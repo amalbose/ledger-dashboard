@@ -14,7 +14,11 @@ def show(parent, data):
     data_b = data['balances']
     data_total = data_b['total']
     data_savings = data_b['savings']
-    data_deposits = data_b['deposits']
+    data_savings = dict(sorted(data_savings.items(),
+                        key=lambda item: item[1], reverse=True))
+    data_deposits = data_b['deposit']
+    data_deposits = dict(sorted(data_deposits.items(),
+                                key=lambda item: item[1], reverse=True))
     parent.markdown(
         "##### Current Assets [" + utils.format_cur(data_total) + "]")
 
@@ -43,6 +47,8 @@ def show(parent, data):
     with leftc:
         data_bal = data['balances']
         data_inv = data_bal['investments']
+        data_inv = dict(sorted(data_inv.items(),
+                               key=lambda item: item[1], reverse=True))
         icols = parent.columns(len(data_inv))
         indx = 0
         for type, val in data_inv.items():

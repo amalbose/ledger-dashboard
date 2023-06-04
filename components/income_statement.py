@@ -15,7 +15,7 @@ def show(parent, data):
     with col_l:
         data = {
             'Name': ['Income', 'Expense'],
-            'Value': [data_cur['income'], data_cur['expense']]
+            'Value': [data_cur['income'], data_cur['expenses']]
         }
 
         plost.bar_chart(
@@ -28,8 +28,8 @@ def show(parent, data):
                 use_container_width=True)
     with col_r:
         income = utils.format_cur(data_cur['income'])
-        expense = utils.format_cur(data_cur['expense'])
-        net = utils.format_cur(data_cur['income'] - data_cur['expense'])
+        expense = utils.format_cur(data_cur['expenses'])
+        net = utils.format_cur(data_cur['income'] - data_cur['expenses'])
 
         income_col, expense_col, net_col = st.columns(3)
         income_col.metric("Income", income)
