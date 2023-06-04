@@ -12,4 +12,4 @@ def format_cur(val):
     sign = ""
     if val < 0:
         sign = "-"
-    return sign + format_INR(abs(val)) + " " + get_cur()
+    return get_cur() + " " + sign + format_INR(abs(val))

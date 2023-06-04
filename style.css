@@ -1,27 +1,36 @@
 /* Card */
 /* Adapted from https://startbootstrap.com/theme/sb-admin-2 */
-div.block-container > div > div > div[data-testid="stHorizontalBlock"]:nth-child(4) > div[data-testid="column"],
-div.block-container > div > div > div[data-testid="stHorizontalBlock"]:nth-child(8) > div[data-testid="column"],
-div.block-container > div > div > div[data-testid="stHorizontalBlock"]:nth-child(6) > div > div> div>div[data-testid="stHorizontalBlock"] > div[data-testid="column"]
+div.block-container > div > div > div[data-testid="stHorizontalBlock"]:nth-child(3) > div > div> div>div[data-testid="stHorizontalBlock"] > div[data-testid="column"],
+div.block-container > div > div > div[data-testid="stHorizontalBlock"]:nth-child(5) > div[data-testid="column"],
+div.block-container > div > div > div[data-testid="stHorizontalBlock"]:nth-child(6)
 {
   background-color: #FFFFFF;
-  border: 1px solid #CCCCCC;
-  padding: 18px 8px 8px 34px;
+  border: 1px solid #EFEFEF;
+  padding: 8px 8px 8px 16px;
   border-radius: 5px;
   
   border-left: 0.5rem solid #9AD8E1 !important;
-  box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;
+  /* box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important; */
 }
 
 /* red for expense col */
-div.block-container > div > div > div[data-testid="stHorizontalBlock"]:nth-child(4) > div[data-testid="column"]:nth-child(2) {
+div.block-container > div > div > div[data-testid="stHorizontalBlock"]:nth-child(3) > div > div> div>div[data-testid="stHorizontalBlock"] > div[data-testid="column"]:nth-child(2) {
   border-left: 0.5rem solid #e28955 !important;
 }
 
+/* chart */
+div.block-container > div > div > div[data-testid="stHorizontalBlock"]:nth-child(7)
+{
+  background-color: #FFFFFF;
+  border: 1px solid #FFFFFF;
+  padding: 8px 8px 8px 34px;
+  border-radius: 5px;
+}
+
 /* label color */
-div[data-testid="stMetricLabel"]{
+label[data-testid="stMetricLabel"]{
     color: #36b9cc !important;
-    font-weight: 700 !important;
+    font-weight: 300 !important;
     text-transform: uppercase !important;
 }
 
@@ -31,8 +40,27 @@ div.block-container.css-z5fcl4.e1g8pov64 {
   margin-top: -5em;
 }
 
+/* block-container */
+.css-z5fcl4 {
+  padding-left: 3rem;
+  padding-right: 2rem;
+}
+
+.css-1xarl3l {
+  font-size: 1.6rem;
+  padding-bottom: 0.25rem;
+}
+
+/** sidebar **/
+section[data-testid='stSidebar'] > div > div:nth-child(2) {
+  padding-top: 10px !important;
+  padding-left: 20px !important;
+}
 
 /* Hide hamburger menu and footer */
+header[data-testid='stHeader'] {
+  display: none;
+}
 div.css-r698ls.e8zbici2 {
   display: none;
 }
