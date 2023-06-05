@@ -22,12 +22,18 @@ def show_areachart(parent, data):
 
 
 def show_barchart(parent, data):
-    bare_data = data['expenses-bare']
-    bare_data = data['expenses-bare']
-    bdf = pd.DataFrame(bare_data['data'], columns=bare_data['headers'])
 
-    # st.bar_chart(bdf, x='Date',
-    #              height=600)
+    bare_data = data['expenses-bare']
+    bare_data = data['expenses-bare']
+
+    select_list = bare_data['headers'].copy()
+    select_list.remove('Date')
+    options = st.multiselect(
+        'Select Expenses to filter',
+        select_list,
+        select_list)
+
+    bdf = pd.DataFrame(bare_data['data'], columns=bare_data['headers'])
 
     coll, colr = parent.columns([.95, 0.05])
     with coll:
@@ -38,5 +44,7 @@ def show_barchart(parent, data):
             pan_zoom='both',
             height=500,
             direction='horizontal',
-            value=bare_data['headers'],
+            value=options,
             use_container_width=True)
+
+    st.dataframe(data=bdf)
