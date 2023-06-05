@@ -18,6 +18,14 @@ def get_expense_data():
     return data
 
 
+def get_budget_data():
+    data = {
+        'data': get_budgets_data(),
+        'summary': get_budgets_summary()
+    }
+    return data
+
+
 def get_data_from_json():
     f = open('data.json')
     return json.load(f)
