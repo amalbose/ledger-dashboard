@@ -1,6 +1,7 @@
 import subprocess
 from io import StringIO
 import csv
+import pandas as pd
 
 #
 # ledger bal -p 'this month'  --format  '%(quoted(display_total)),%(quoted(account)),%(quoted(partial_account)),%(depth)\n%/'
@@ -37,7 +38,6 @@ def get_income_statements():
     f = StringIO(ledger_bal.stdout)
     reader = csv.reader(f, delimiter=',')
     cur = {}
-    total = 0
     for row in reader:
         if row[0] != "":
             cur[row[0].lower()] = abs(float(row[1].replace(" INR", "")))
@@ -47,5 +47,66 @@ def get_income_statements():
     return data
 
 
+# hledger balance -M income expense --tree -E -O csv --layout=tidy
+def get_expenses_data():
+    ledger_bal = subprocess.run(["hledger", "balance", "-M", "expense", "-X", "INR", "--tree", "-E", "-O", "csv", "--layout", "tidy"],
+                                stdout=subprocess.PIPE,
+                                text=True)
+    f = StringIO(ledger_bal.stdout)
+    reader = csv.reader(f, delimiter=',')
+    data = []
+    indx = 0
+    for row in reader:
+        if indx == 0:   # skip header
+            indx = indx + 1
+            continue
+        splits = row[0].split(":")
+        if len(splits) < 2:
+            continue
+        datarow = [row[0], row[2], row[5]]
+        data.append(datarow)
+    return data
+
+# hledger balance -M income expense --tree -E -O csv --layout=tidy
+
+
+def get_expenses_bare_data():
+    ledger_bal = subprocess.run(["hledger", "balance", "-M", "expense", "-X", "INR", "--tree", "-E", "-O", "csv", "--layout", "bare", "--depth", "2"],
+                                stdout=subprocess.PIPE,
+                                text=True)
+    f = StringIO(ledger_bal.stdout)
+    reader = csv.reader(f, delimiter=',')
+    cols = []
+    data = {}
+    indx = 0
+    headers = ['Date']
+    for row in reader:
+        if indx == 0:   # skip header
+            indx = indx + 1
+            cols = row[2:]
+            j = 2
+            for col in cols:
+                data[col] = []
+            continue
+        splits = row[0].split(":")
+        if len(splits) < 2:
+            continue
+        headers.append(row[0])
+        for i in range(0, len(cols)):
+            idx = i + 2
+            data[cols[i]].append(float(row[idx]))
+
+    full_data = []
+    for key, value in data.items():
+        rw = []
+        rw.append(key)
+        rw = rw + value
+        full_data.append(rw)
+    return {
+        'headers': headers,
+        'data': full_data
+    }
+
+
 if __name__ == "__main__":
-    print(get_income_statements())
+    print(get_expenses_bare_data())

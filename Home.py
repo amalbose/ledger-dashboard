@@ -11,7 +11,7 @@ import ledger.ledger_api as ledger
 
 @st.cache_data
 def load_data():
-    return ledger.get_data()
+    return ledger.get_home_data()
 
 
 st.set_page_config(layout='wide', initial_sidebar_state='expanded',
