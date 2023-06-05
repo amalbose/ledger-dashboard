@@ -91,10 +91,10 @@ def get_expenses_bare_data():
         splits = row[0].split(":")
         if len(splits) < 2:
             continue
-        headers.append(row[0])
+        headers.append(row[0].replace("Expenses:", ""))
         for i in range(0, len(cols)):
             idx = i + 2
-            data[cols[i]].append(float(row[idx]))
+            data[cols[i]].append(max(0, float(row[idx])))
 
     full_data = []
     for key, value in data.items():

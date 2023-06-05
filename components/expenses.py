@@ -24,8 +24,19 @@ def show_areachart(parent, data):
 def show_barchart(parent, data):
     bare_data = data['expenses-bare']
     bare_data = data['expenses-bare']
-    print(bare_data['data'][:2])
     bdf = pd.DataFrame(bare_data['data'], columns=bare_data['headers'])
 
-    st.bar_chart(bdf, x='Date',
-                 height=600)
+    # st.bar_chart(bdf, x='Date',
+    #              height=600)
+
+    coll, colr = parent.columns([.95, 0.05])
+    with coll:
+        plost.bar_chart(
+            title="Expense Categories",
+            data=bdf,
+            bar='Date',
+            pan_zoom='both',
+            height=500,
+            direction='horizontal',
+            value=bare_data['headers'],
+            use_container_width=True)
