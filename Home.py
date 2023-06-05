@@ -9,7 +9,7 @@ import components.balance_statement as bal
 import ledger.ledger_api as ledger
 
 
-@st.cache_data
+# @st.cache_data
 def load_data():
     return ledger.get_home_data()
 
