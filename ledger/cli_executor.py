@@ -191,7 +191,29 @@ def get_budgets_summary():
         'data':  data,
         'nondata': nondata
     }
+# hledger reg -p thismonth -O csv -E
+
+
+def get_reg_cur():
+    ledger_bal = subprocess.run(["hledger", "reg", "-p", "thismonth", "-O", "csv"],
+                                stdout=subprocess.PIPE,
+                                text=True)
+    f = StringIO(ledger_bal.stdout)
+    reader = csv.reader(f, delimiter=',')
+    data = []
+    indx = 0
+    for row in reader:
+        if indx == 0:   # skip header
+            indx = indx + 1
+            continue
+        data.append([row[0], row[1], row[3], row[4],
+                    float(row[5].replace(" INR", ""))])
+
+    return {
+        'headers': ["Id", "Date", "Description", "Account", "Amount"],
+        'data':  data
+    }
 
 
 if __name__ == "__main__":
-    print(get_expenses_data())
+    print(get_reg_cur())

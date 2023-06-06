@@ -26,6 +26,12 @@ def get_budget_data():
     return data
 
 
+def get_reg():
+    return {
+        'cur': get_reg_cur()
+    }
+
+
 def get_data_from_json():
     f = open('data.json')
     return json.load(f)
