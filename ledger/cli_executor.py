@@ -47,9 +47,10 @@ def get_income_statements():
     return data
 
 
-# hledger balance -M income expense --tree -E -O csv --layout=tidy
+# hledger balance -M income expense --tree -E -O csv --layout=tidy --old
+# hledger balance --budget -M expense -p thismonth --layout=bare -O csv -E
 def get_expenses_data():
-    ledger_bal = subprocess.run(["hledger", "balance", "-M", "expense", "-X", "INR", "--tree", "-E", "-O", "csv", "--layout", "tidy"],
+    ledger_bal = subprocess.run(["hledger", "balance", "--budget", "-M", "expense", "-X", "INR", "-O", "csv", "--layout", "bare", "-p", "thismonth", "-E"],
                                 stdout=subprocess.PIPE,
                                 text=True)
     f = StringIO(ledger_bal.stdout)
@@ -57,15 +58,23 @@ def get_expenses_data():
     data = []
     indx = 0
     for row in reader:
+        if row[0] == 'Total:':
+            continue
         if indx == 0:   # skip header
             indx = indx + 1
             continue
         splits = row[0].split(":")
         if len(splits) < 2:
             continue
-        datarow = [row[0], row[2], row[5]]
+        if (float(row[2])) <= 0:
+            continue
+        datarow = [row[0].replace("Expenses:", ""), max(
+            0, float(row[2])), float(row[3])]
         data.append(datarow)
-    return data
+    return {
+        'data': data,
+        'headers': ['Name', 'Amount', 'Budget']
+    }
 
 # hledger balance -M income expense --tree -E -O csv --layout=tidy
 
@@ -185,4 +194,4 @@ def get_budgets_summary():
 
 
 if __name__ == "__main__":
-    print(get_budgets_summary())
+    print(get_expenses_data())

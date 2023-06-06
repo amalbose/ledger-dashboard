@@ -23,21 +23,18 @@ def show_budgetsummary(parent, data):
             "Percent": st.column_config.ProgressColumn(
                 "Percent",
                 format="%d %%",
-                width='medium',
                 min_value=0,
                 max_value=100
             ),
             "Amount": st.column_config.NumberColumn(
                 "Amount",
                 format="₹ %d",
-                width='medium',
                 min_value=0,
                 max_value=100,
             ),
             "Budget": st.column_config.NumberColumn(
                 "Budget",
                 format="₹ %d",
-                width='medium',
                 min_value=0,
                 max_value=100,
             ),
@@ -54,14 +51,12 @@ def show_budgetsummary(parent, data):
             "Percent": st.column_config.ProgressColumn(
                 "Percent of Total Budget",
                 format="%d %%",
-                width='medium',
                 min_value=0,
                 max_value=100
             ),
             "Amount": st.column_config.NumberColumn(
                 "Amount",
                 format="₹ %d",
-                width='medium',
                 min_value=0,
                 max_value=100,
             ),

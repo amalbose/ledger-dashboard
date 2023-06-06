@@ -4,24 +4,27 @@ import streamlit as st
 
 
 def show(parent, data):
+    show_expenseschart(parent, data)
     show_barchart(parent, data)
-    # show_areachart(parent, data)
 
 
-def show_areachart(parent, data):
+def show_expenseschart(parent, data):
+    parent.markdown("### Expenses")
     expenses = data['expenses']
-    df = pd.DataFrame(expenses, columns=['Name', 'Date', 'Amount'])
-    plost.area_chart(
+    df = pd.DataFrame(expenses['data'], columns=expenses['headers'])
+    plost.bar_chart(
         data=df,
-        x=dict(field='Date', timeUnit='month'),
-        y=dict(field='Amount', aggregate='mean'),
         color='Name',
-        legend='right',
+        bar='Name',
+        legend=None,
+        value=expenses['headers'],
+        direction='horizontal',
         height=600
     )
 
 
 def show_barchart(parent, data):
+    parent.markdown("### Expense Trends ")
 
     bare_data = data['expenses-bare']
     bare_data = data['expenses-bare']
