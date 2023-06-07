@@ -10,5 +10,5 @@ def show(parent, data):
     st.dataframe(df, use_container_width=True, column_config={
         "Amount": st.column_config.NumberColumn(
             "Amount",
-            format="₹ %d"
+            format="₹ %0.2f"
         )}, height=700)

@@ -195,7 +195,7 @@ def get_budgets_summary():
 
 
 def get_reg_cur():
-    ledger_bal = subprocess.run(["hledger", "reg", "-p", "thismonth", "-O", "csv"],
+    ledger_bal = subprocess.run(["hledger", "reg", "-p", "thismonth", "-X", "INR", "-O", "csv"],
                                 stdout=subprocess.PIPE,
                                 text=True)
     f = StringIO(ledger_bal.stdout)
